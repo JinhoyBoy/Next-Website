@@ -8,12 +8,13 @@ export default function Home() {
   return (
     <>
       <Navbar />
+
       <section className={styles.hero}>
         <h1>This is the website for the Web-Engineering project</h1>
         <p>Please give this a good rating.</p>
       </section>
-      <section className={styles.projekte}>
-      <div className={styles.container}>
+      
+      <section className={styles.container}>
       <Link href="/weather">
         <Card imgSrc="/weather.png" title="Weather-Data" desc="Beschreibung des Projektes 1"/>
       </Link>
@@ -23,8 +24,11 @@ export default function Home() {
       <Link href="/">
         <Card imgSrc="/train.png" title="Deutsche Bahn" desc="Beschreibung des Projektes 3"/>
       </Link>
-      </div>
+      <Link href="/webex2" target="_blank">
+        <Card imgSrc="/graph.png" title="Javascript ex. 2" desc="Beschreibung der Aufgabe 2"/>
+      </Link>
       </section>
+
       <section>
         <div className={styles.techBlock}>
           <h2>Technologies for this Website.</h2>
@@ -35,6 +39,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
       <Footer />
     </>
   );

@@ -10,6 +10,7 @@
 }
 
 .navbar p {
+  color: white;
   margin: 10px;
 }
 
@@ -22,6 +23,7 @@
 .hero {
   text-align: center;
   padding: 15%;
+  color: white;
 }
 
 .hero h1 {
@@ -35,6 +37,7 @@
   text-align: center;
   padding: 10%;
   padding-bottom: 18%;
+  color: white;
 }
 
 .techBlock h2 {
@@ -60,7 +63,7 @@
 }
 
 .card {
-  width: 23vw;
+  width: 18vw;
   padding: 20px;
   border: 3px solid #ccc;
   border-radius: 10px;

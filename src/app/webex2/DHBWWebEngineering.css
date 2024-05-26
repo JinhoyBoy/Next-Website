@@ -24,7 +24,7 @@ nav,header {width:100%;}
     "header"
     "navigation"
     "scroller"
-    "footer"
+    "footer";
   }
   .pagegridheader {grid-area: header}
   .pagegridnavigation {grid-area: navigation}
@@ -43,7 +43,6 @@ nav,header {width:100%;}
 /* Navigation Bar
 -------------------------------------------------------------------------------*/
 nav {background:darkgrey;}
-nav::after{clear:both; content:""; display:block;}   /* just take this          */
 nav li {list-style-type: none; text-align: center;}
 /* Give each even list item the color #848d9e; and each odd #e2e4e8;            */
 nav li:nth-child(2n) {background: #848d9e;}
@@ -51,8 +50,7 @@ nav li:nth-child(2n+1) {background: #e2e4e8;}
 /* Take the rest as it is or modify to improve.. this is up to you              */
 nav li:hover {background-color:white;}
 nav li a { text-decoration: none; display:block; padding:1.2rem; color: yellow; font-weight: bold;}
-a:visited { color: blue;}
-a:hover, a:active, a:focus { color: darkred;  text-decoration: none;}
+td a {color: blue;}
 /* -----------------------------------------------------------------------------
 YouTube Section
 --------------------------------------------------------------------------------*/
