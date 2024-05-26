@@ -3,10 +3,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: rgba(0, 0, 0, 0);
+  position: fixed;
+  width: 100%;
+  height: auto;
 }
 
 .navbar p {
   margin: 10px;
+}
+
+.navbar img {
+  margin: 10px;
+  width: 2%;
+  height: auto;
 }
 
 .hero {
@@ -14,33 +24,31 @@
   padding: 15%;
 }
 
-.techSection {
-  padding: 50px 0;
+.hero h1 {
+  font-size: 30px;
+  padding-bottom: 10px;
 }
 
 .techBlock {
   max-width: 800px;
   margin: 0 auto;
   text-align: center;
+  padding: 10%;
+  padding-bottom: 18%;
 }
 
 .techBlock h2 {
   font-size: 32px;
-  margin-bottom: 20px;
+  margin-bottom: 10%;
 }
 
-.techBlock ul {
-  list-style: none;
-  padding: 0;
+.techList {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
-.techBlock li {
-  font-size: 20px;
-  margin-bottom: 10px;
-  padding: 4%;
-}
-
-.techBlock li:hover {
+.techList a:hover {
   cursor: pointer;
   color: #007bff;
 }
@@ -56,12 +64,11 @@
   padding: 20px;
   border: 3px solid #ccc;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .card:hover {
-  background-color: #007bff;
-  border: none;
+  background-color: #696969;
+  border: 3px solid #696969;
 }
 
 .card img {
@@ -73,6 +80,11 @@
 
 .footer {
   text-align: center;
-  padding: 10px;
+  padding-top: 25px;
+  padding-bottom: 20px;
+  background-color: rgb(8, 8, 8);
 }
 
+.footer p {
+  color: gray;
+}

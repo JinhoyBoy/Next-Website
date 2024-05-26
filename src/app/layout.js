@@ -5,6 +5,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "Web-Engineering",
   description: "Website for the Web-Engineering Exam",  
+  icons: {
+    icon: '/logo.svg', // /public path
+  },
 };
 
 export default function RootLayout({ children }) {
