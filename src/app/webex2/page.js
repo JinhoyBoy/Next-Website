@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect } from 'react';
 import './DHBWWebengineering.css';
-import './myJavascript.js';
 
 const Webex2 = () => {
   useEffect(() => {
@@ -56,7 +55,7 @@ const Webex2 = () => {
 
   const searchWikipedia = () => {
     const searchString = document.getElementById("searchInput").value;
-    const apiUrl = "/api/proxy";
+    const apiUrl = "/api/wiki";
     const fullUrl = `${apiUrl}?action=query&generator=prefixsearch&format=json&gpslimit=4&prop=extracts%7Cdescription&exintro=1&explaintext=1&exsentences=3&redirects=1&gpssearch=${searchString}`;
     console.log(fullUrl);
     fetch(fullUrl)

@@ -3,8 +3,7 @@ import { NextResponse } from 'next/server';
 export async function GET(request) {
   const { searchParams } = new URL(request.url);
   const query = searchParams.toString();
-
-  const targetUrl = `https://de.wikipedia.org/w/api.php?${query}`;
+  const targetUrl = `https://api.openweathermap.org/data/2.5/forecast/?${query}`;
 
   try {
     const response = await fetch(targetUrl);
