@@ -97,7 +97,7 @@ export default function Weather() {
           {weatherData && locationData && (
             <>
               <div className={styles.weatherHead}>
-                <h2>Weather forcast for {locationData.name}</h2>
+                <h2>Weather Forecast for {locationData.name}</h2>
                 <p>Longitude: {locationData.coord.lon} Latitude: {locationData.coord.lat}</p>
               </div>
               <div className={styles.weatherList}>
@@ -108,7 +108,7 @@ export default function Weather() {
           {weatherData === null &&(
             <>
               <div className={styles.weatherHead}>
-                <p>Please type in a valid city</p>
+                <p>Please type in a valid city and click "Send"</p>
               </div>
             </>
           )}

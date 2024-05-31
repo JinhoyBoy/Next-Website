@@ -16,16 +16,16 @@ export default function Home() {
       
       <section className={styles.container}>
       <Link href="/weather">
-        <Card imgSrc="/weather.png" title="Weather-Data" desc="Beschreibung Projekt 1"/>
+        <Card imgSrc="/weather.png" title="Weather-Data" desc="Shows a 5-day Forecast"/>
       </Link>
-      <Link href="/stocks">
-        <Card imgSrc="/graph.png" title="HTML-Canvas" desc="Beschreibung Projekt 2"/>
+      <Link href="/canvas">
+        <Card imgSrc="/graph.png" title="HTML-Canvas" desc="Make Signatures here"/>
       </Link>
       <Link href="/">
-        <Card imgSrc="/train.png" title="Deutsche Bahn" desc="Beschreibung Projekt 3"/>
+        <Card imgSrc="/train.png" title="Deutsche Bahn" desc="Shows how late trains are"/>
       </Link>
       <Link href="/webex2" target="_blank">
-        <Card imgSrc="/graph.png" title="Javascript ex. 2" desc="Beschreibung der Aufgabe 2"/>
+        <Card imgSrc="/computer.png" title="Javascript ex. 2" desc="People & Wikipedia search"/>
       </Link>
       </section>
 

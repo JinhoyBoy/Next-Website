@@ -23,6 +23,7 @@
 .hero {
   text-align: center;
   padding: 15%;
+  padding-bottom: 5%;
   color: white;
 }
 
@@ -106,7 +107,16 @@
   color: white;
 }
 
+.canvas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 10%;
+}
+
 .footer {
+  position: absolute;
+  width: 100%;
   text-align: center;
   padding-top: 25px;
   padding-bottom: 20px;
