@@ -1,7 +1,7 @@
 /* ----------------------------------------------------------------------------
    Base Default Setting
 ------------------------------------------------------------------------------*/
-* {margin:0;padding:0;box-sizing: border-box;} /* just to force a good default                          */
+* {margin:0;padding:0;box-sizing: border-box;}
 header,footer {color: white;  background-color: black; padding:1em;width:100%;}
 nav,header {width:100%;}
 /* a nice card layout (as modern frameworks show as well)                     */

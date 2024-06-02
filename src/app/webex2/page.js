@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect } from 'react';
+import Link from 'next/link';
 import './DHBWWebengineering.css';
 
 const Webex2 = () => {
@@ -104,9 +105,9 @@ const Webex2 = () => {
 
   return (
     <>
-      <div className="pagegridcontainer" style={{ height: '100%', width: '100%', position: 'fixed' }}>
+      <div className="pagegridcontainer" style={{ height: '100%', width: '100%', position: 'fixed'}}>
         <header className="pagegridheader flexboxheader">
-          <img src="logo.svg" alt="DHBW Logo" style={{ minWidth: '100px', flexBasis: '25%', maxWidth: '120px' }} width={150} height={100} />
+          <Link href="/"><img src="logo.svg" alt="DHBW Logo" style={{ minWidth: '100px', flexBasis: '25%', maxWidth: '120px' }} width={150} height={100} /></Link>
           <span>DHBW Stuttgart Web Engineering Portal</span>
         </header>
         <nav className="pagegridnavigation">
@@ -117,7 +118,7 @@ const Webex2 = () => {
             <li id="PullupServices"><a href="#Dienste">Dienste</a></li>
           </ul>
         </nav>
-        <div id="scrollpart" className="pagegridsrcol" style={{ overflow: 'auto' }}>
+        <div id="scrollpart" className="pagegridsrcol" style={{ overflow: 'auto' , backgroundColor: 'white'}}>
           <div className="flexyouTube youTube">
             <div className="card" style={{ position: 'relative', width: '80%', maxWidth: '600px' }}>
               <div style={{ position: 'relative', width: '100%', height: 0, paddingBottom: '56.25%' }}>

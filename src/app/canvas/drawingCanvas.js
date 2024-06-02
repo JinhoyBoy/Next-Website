@@ -87,7 +87,7 @@ const DrawingCanvas = ({ onClose }) => {
         onMouseMove={draw}
         onMouseUp={stopDrawing}
         onMouseLeave={stopDrawing}
-        style={{borderRadius: '10px', display: 'block', backgroundColor: 'gray', touchAction: 'none' }}
+        style={{border: '3px solid gray', borderRadius: '10px', display: 'block', backgroundColor: 'white', touchAction: 'none' }}
       />
       <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '10px' }}>
         <button onClick={clearCanvas}>Clear</button>

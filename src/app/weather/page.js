@@ -10,11 +10,11 @@ export default function Weather() {
   const [locationData, setLocationData] = useState(null);
 
   const searchOpenweathermap = () => {
-    const apiKey = "8f4d494292455f45a77bed8d11f7d1e0";
+    const apiKey = process.env.NEXT_PUBLIC_WEATHER_API_KEY;
     const city = document.getElementById("city").value;
     const apiUrl = "https://api.openweathermap.org/data/2.5/forecast";
     const fullUrl = `${apiUrl}?q=${city}&units=metric&appid=${apiKey}`;
-    console.log(fullUrl);
+    //console.log(fullUrl);
     fetch(fullUrl, {cache : "no-store"})
       .then(response => response.json())
       .then(data => {
