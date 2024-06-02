@@ -63,6 +63,7 @@
   padding: 10%;
 }
 
+
 .card {
   width: 18vw;
   padding: 20px;
@@ -125,4 +126,35 @@
 
 .footer p {
   color: gray;
+}
+
+@media (max-width: 720px) {
+	.container {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .card {
+    width: 80vw;
+    margin-bottom: 10%;
+  }
+
+  .content {
+    width: 80vw;
+  }
+
+  .weatherUI {
+    height: auto;
+  }
+
+  .weatherList {
+    flex-direction: column;
+    justify-content: center;
+    padding: 10%;
+  }
+
+  .weatherItem {
+    width: 80vw;
+    margin-bottom: 10%;
+  }
 }

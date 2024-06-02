@@ -8,6 +8,7 @@ import Link from 'next/link';
 export default function Weather() {
   const [weatherData, setWeatherData] = useState(null);
   const [locationData, setLocationData] = useState(null);
+  const [error, setError] = useState("");
 
   const searchOpenweathermap = () => {
     const apiKey = process.env.NEXT_PUBLIC_WEATHER_API_KEY;
@@ -22,9 +23,11 @@ export default function Weather() {
           const formattedData = populateWeatherData(data);
           setWeatherData(formattedData);
           setLocationData(data.city); // Store location data separately
+          setError("")
         } else {
           setWeatherData(null);
           setLocationData(null);
+          setError("This is not a valid city. Please try again.");
         }
       })
       .catch(error => console.error("Error fetching data from Openweathermap:", error));
@@ -107,8 +110,8 @@ export default function Weather() {
           )}
           {weatherData === null &&(
             <>
-              <div className={styles.weatherHead}>
-                <p>Please type in a valid city and click "Send"</p>
+              <div style={{textAlign: 'center', height: '30vh', color: 'white', padding: '10px'}}>
+                <p id="validcheck">{error}</p>
               </div>
             </>
           )}

@@ -11,6 +11,9 @@ const DrawingCanvas = ({ onClose }) => {
     const resizeCanvas = () => {
       canvas.width = window.innerWidth * 0.4;
       canvas.height = window.innerHeight * 0.3;
+      if (window.innerWidth < 500) {
+        canvas.height = window.innerHeight * 0.1;
+      }
     };
     resizeCanvas();
 

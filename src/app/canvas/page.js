@@ -24,7 +24,7 @@ export default function Canvas() {
   return (
     <>
       <Navbar />
-      <div style={{ paddingTop: "20vh" }}></div>
+      <div style={{ paddingTop: "20vh" }}>
       <div className={styles.weatherHead}>
         <h1>Canvas!</h1>
         <br />
@@ -35,12 +35,13 @@ export default function Canvas() {
       </div>
       <div className={styles.weatherHead}>
         <h3>Your signature:</h3>
-        {drawingImageUrl && <img src={drawingImageUrl} alt='Drawing' />}
+        <div style={{height: '30vh'}}>{drawingImageUrl && <img src={drawingImageUrl} alt='Drawing'/>}</div>
       </div>
       <Link href="/">
         <h3 style={{ textAlign: "center", paddingBottom: "30px", textDecoration: "underline", color: "#898989" }}>Back to home</h3>
       </Link>
       <Footer/>
+      </div>
     </>
   );
 }
