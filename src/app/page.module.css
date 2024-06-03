@@ -97,7 +97,7 @@
 .weatherItem {
   padding: 4%;
   width: 16vw;
-  background-color: #6793d696;
+  background-image: linear-gradient(rgb(146, 157, 174), rgb(49, 56, 75));
   border-radius: 10px;
 }
 

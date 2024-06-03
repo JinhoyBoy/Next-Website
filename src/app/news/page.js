@@ -75,7 +75,7 @@ const News = () => {
       <div className={styles.weatherHead}>
         <h1>News!</h1>
         <br />
-        <p>Top 10 News From BBC News & New York Times Technology.</p>
+        <p>Top 10 News from BBC News & New York Times Technology.</p>
       </div>
 
       <div style={{ padding: '5%' }}>
