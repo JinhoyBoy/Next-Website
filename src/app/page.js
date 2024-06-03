@@ -10,7 +10,7 @@ export default function Home() {
       <Navbar />
 
       <section className={styles.hero}>
-        <h1>This is the website for the Web-Engineering project</h1>
+        <h1>This is the website for the Web-Engineering project.</h1>
         <p>Please give this a good rating.</p>
       </section>
       
@@ -21,8 +21,11 @@ export default function Home() {
       <Link href="/canvas">
         <Card imgSrc="/graph.png" title="HTML-Canvas" desc="Make Signatures here"/>
       </Link>
-      <Link href="/">
-        <Card imgSrc="/train.png" title="Deutsche Bahn" desc="Shows how late trains are"/>
+      <Link href="/stock">
+        <Card imgSrc="/briefcase.png" title="Stock-Data" desc="Shows a Chart of Stock Prices"/>
+      </Link>
+      <Link href="/news">
+        <Card imgSrc="/newspaper.png" title="RSS-News" desc="Shows News articles"/>
       </Link>
       <Link href="/webex2" target="_blank">
         <Card imgSrc="/computer.png" title="Javascript ex. 2" desc="People & Wikipedia search"/>

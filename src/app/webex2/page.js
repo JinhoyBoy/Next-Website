@@ -141,7 +141,7 @@ const Webex2 = () => {
           <div className="flexFakultaet Fakultaeten card">
             <div id="Informatik" className="FakultaetTitel">Informatik</div>
             <div className="FakultaetBild card">
-              <img src="/Erdbeer-Q.jpeg" alt="Informatik" width={300} height={200} />
+              <img src="/webex2/Erdbeer-Q.jpeg" alt="Informatik" width={300} height={200} />
             </div>
             <div className="FakultaetBeschreibung card">
               Informatiker übertragen Vorgänge der realen Welt auf Computersysteme,
@@ -153,7 +153,7 @@ const Webex2 = () => {
           <div className="flexFakultaet Fakultaeten card">
             <div id="Elektrotechnik" className="FakultaetTitel">Elektrotechnik</div>
             <div className="FakultaetBild card">
-              <img src="/Mandarinen-Q.jpeg" alt="Elektrotechnik" width={300} height={200} />
+              <img src="/webex2/Mandarinen-Q.jpeg" alt="Elektrotechnik" width={300} height={200} />
             </div>
             <div className="FakultaetBeschreibung card">
               Die Elektrotechnik bewegt und verändert die Welt:
@@ -169,7 +169,7 @@ const Webex2 = () => {
           <div className="flexFakultaet Fakultaeten card">
             <div id="Maschinenbau" className="FakultaetTitel">Maschinenbau</div>
             <div className="FakultaetBild card">
-              <img src="/Pizza-Q.jpeg" alt="Maschinenbau" width={300} height={200} />
+              <img src="/webex2/Pizza-Q.jpeg" alt="Maschinenbau" width={300} height={200} />
             </div>
             <div className="FakultaetBeschreibung card">
               Der Maschinenbau mit seinen zahlreichen Ausprägungen verknüpft Theorie
