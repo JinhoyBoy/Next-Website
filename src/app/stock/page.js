@@ -18,6 +18,11 @@ const fetchStockData = async (symbol) => {
 };
 // Funktion zum Transformieren der Aktiendaten in ein Chart.js-kompatibles Format
 const transformData = (data) => {
+  // Überprüfen, ob "Time Series (Daily)" existiert
+  if (!data["Time Series (Daily)"]) {
+    // Alternativer Rückgabewert, falls "Time Series (Daily)" nicht vorhanden ist
+    return { dates: [], prices: [], error: 'Time Series data not found, probably because ALPHA VANTAGE only allows 25 calls per day... Please try again tomorrow.' };
+  }
   const timeSeries = data["Time Series (Daily)"];
   const dates = Object.keys(timeSeries).slice(0, 30).reverse();
   const prices = dates.map((date) => parseFloat(timeSeries[date]["4. close"]));
@@ -36,12 +41,17 @@ const StockChart = ({ symbol, stockData }) => {
   const chartRef = useRef(null);
   const chartInstance = useRef(null);
   const [stockInfo, setStockInfo] = useState(null);
-  // useEffect Hook, um das Chart.js-Diagramm zu initialisieren
+
   useEffect(() => {
+    if (stockData.error) {
+      setStockInfo(null);
+      return;
+    }
+
     if (chartInstance.current) {
       chartInstance.current.destroy();
     }
-    // Initialisiere das Chart.js-Diagramm
+
     const ctx = chartRef.current.getContext("2d");
     chartInstance.current = new Chart(ctx, {
       type: "line",
@@ -95,16 +105,23 @@ const StockChart = ({ symbol, stockData }) => {
   }, [stockData]);
 
   return (
-    // HTML-Struktur für das Aktiendiagramm
     <>
-      <canvas ref={chartRef} style={{padding: '3%'}}></canvas>
-      {stockInfo && (
-        <div className={styles.stockInfo} style={{paddingLeft: '6%', color: 'white'}}>
-          <p><strong>Latest Date:</strong> {stockInfo.lastDate}</p>
-          <p><strong>Current Price:</strong> ${stockInfo.currentPrice}</p>
-          <p><strong>Minimum Price:</strong> ${stockInfo.minPrice}</p>
-          <p><strong>Maximum Price:</strong> ${stockInfo.maxPrice}</p>
+      {stockData.error ? (
+        <div className={styles.error} style={{ color: 'orange', textAlign: 'center', padding: '5%'}}>
+          <p>{stockData.error}</p>
         </div>
+      ) : (
+        <>
+          <canvas ref={chartRef} style={{ padding: '3%' }}></canvas>
+          {stockInfo && (
+            <div className={styles.stockInfo} style={{ paddingLeft: '6%', color: 'white' }}>
+              <p><strong>Latest Date:</strong> {stockInfo.lastDate}</p>
+              <p><strong>Current Price:</strong> ${stockInfo.currentPrice}</p>
+              <p><strong>Minimum Price:</strong> ${stockInfo.minPrice}</p>
+              <p><strong>Maximum Price:</strong> ${stockInfo.maxPrice}</p>
+            </div>
+          )}
+        </>
       )}
     </>
   );
