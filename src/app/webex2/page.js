@@ -1,3 +1,4 @@
+//Seite für das Javascript 2 Aufgabe
 "use client";
 import React, { useEffect } from 'react';
 import Link from 'next/link';
@@ -5,14 +6,15 @@ import './DHBWWebengineering.css';
 
 const Webex2 = () => {
   useEffect(() => {
+    // Dekodierung JSON mit den Personendaten
     const jsonstring = ' { "Menschen" : [' +
       ' { "Vorname" : "Peter", "Nachname" :"Müller", "Gender": "male", "Rolle" : "Student"  },' +
       ' { "Vorname" : "Susanne", "Nachname" :"Lehmann", "Gender": "female", "Rolle" : "Studentin"  },' +
       ' { "Vorname" : "Jürgen", "Nachname" :"Schneider", "Gender": "male", "Rolle" : "Dozent"  }'+
       ' ] }';
-
+    // Personen in window.Menschen speichern
     window.Menschen = JSON.parse(jsonstring);
-
+    // EventListener
     document.getElementById('PullupServices').addEventListener("click", dothisnow);
     document.getElementById('PullupOptionsBtn').addEventListener("click", dothislater);
     document.getElementById('popupli1').addEventListener("click", showMenschen);
@@ -24,20 +26,20 @@ const Webex2 = () => {
       document.getElementById('wikiwindow').style.display = "none";
     });
   }, []);
-
+  // Funktion, öffnet Pullup
   const dothisnow = () => {
     console.log("Pull up");
     const pull = document.getElementById("PullupOptions");
     pull.style.top = document.getElementById("scrollpart").offsetTop + "px";
     pull.style.display = "block";
   };
-
+  // Funktion, die das Pull-up-Menü schließt
   const dothislater = () => {
     console.log("close Pull up");
     const pull = document.getElementById("PullupOptions");
     pull.style.display = "none";
   };
-
+  // Zeigt Tabelle mit den Personendaten
   const showMenschen = () => {
     console.log("showMenschen ");
     const tableheader = "<table> <tr><th>Vorname</th><th>Nachname</th><th>Gender</th><th>Rolle</th></tr>";
@@ -51,9 +53,9 @@ const Webex2 = () => {
     const fulltext = tableheader + tabletext + tableclosing;
     document.getElementById('showwindowData').innerHTML = fulltext;
     document.getElementById('showwindow').style.display = "block";
-    document.getElementById('showwindow').style.top = "50%";
+    document.getElementById('showwindow').style.top = document.getElementById("scrollpart").offsetTop + "px";
   };
-
+  // fetchen von Wikipedia
   const searchWikipedia = () => {
     const searchString = document.getElementById("searchInput").value;
     const apiUrl = "/api/wiki";
@@ -64,16 +66,17 @@ const Webex2 = () => {
       .then(data => populateSearchResultsTable(data))
       .catch(error => console.error("Error fetching data from Wikipedia:", error));
   };
-
+  // Ergebnisse anzeigen in Tabelle
   const populateSearchResultsTable = (data) => {
     console.log(data);
     const searchResultsTable = document.getElementById("searchResultsTable");
     const wiki = document.getElementById("wikiwindow");
+    // table clearen
     searchResultsTable.innerHTML = "";
-    wiki.style.top = document.getElementById("scrollpart").offsetTop + "px";
+    wiki.style.top = document.getElementById("scrollpart").offsetTop/2 + "px";
     wiki.style.display = "block";
-    document.getElementById('wikiwindow').style.top = "50%";
-
+    document.getElementById('wikiwindow').style.top = document.getElementById("scrollpart").offsetTop + "px";;
+    // Tabelle
     const headingRow = `
       <tr>
         <th>Title</th>
@@ -107,8 +110,8 @@ const Webex2 = () => {
     <>
       <div className="pagegridcontainer" style={{ height: '100%', width: '100%', position: 'fixed'}}>
         <header className="pagegridheader flexboxheader">
-          <Link href="/"><img src="logo.svg" alt="DHBW Logo" style={{ minWidth: '100px', flexBasis: '25%', maxWidth: '120px' }} width={150} height={100} /></Link>
-          <span>DHBW Stuttgart Web Engineering Portal</span>
+          <Link href="/"><img src="logo.svg" alt="DHBW Logo" width={'40px'}/></Link>
+          <span style={{width:'50%', textAlign:'right'}}>DHBW Stuttgart Web Engineering Portal</span>
         </header>
         <nav className="pagegridnavigation">
           <ul className="flexboxnav">
@@ -198,7 +201,7 @@ const Webex2 = () => {
           </button>
           <div id="showwindowData"></div>
         </div>
-        <div id="wikiwindow" style={{ position: 'fixed', left: 0, display: 'none', backgroundColor: 'white' }}>
+        <div id="wikiwindow" style={{ position: 'fixed', left: 0, display: 'none', backgroundColor: 'white', zIndex: 10 }}>
           <button type="button" id="wikiwindowbtn">
             <span style={{ fontSize: '1.5em', textAlign: 'center' }}> Zurück </span>
           </button>

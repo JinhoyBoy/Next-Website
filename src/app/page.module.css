@@ -1,10 +1,13 @@
+/*CSS für alle Seiten außer webex2 (CSS für Klassen)*/
+
+/*Navbar*/
 .navbar {
   padding: 10px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /*Flexbox für Navbar*/
   align-items: center;
   background-color: rgba(0, 0, 0, 0);
-  position: fixed;
+  position: fixed; /*Sticky*/
   width: 100%;
   height: auto;
 }
@@ -15,11 +18,12 @@
 }
 
 .navbar img {
-  margin: 10px;
+  margin: 10px; /*Navbar*/
   width: 18%;
   height: auto;
 }
 
+/*Hero Section*/
 .hero {
   text-align: center;
   padding: 15%;
@@ -32,6 +36,7 @@
   padding-bottom: 10px;
 }
 
+/*Technologien Liste (Homepage)*/
 .techBlock {
   max-width: 800px;
   margin: 0 auto;
@@ -54,9 +59,10 @@
 
 .techList a:hover {
   cursor: pointer;
-  color: #007bff;
+  color: #007bff; /*Bei Hover schöne Farbe*/
 }
 
+/*Cards für Homepage*/
 .container {
   display: flex;
   justify-content: space-between;
@@ -71,8 +77,8 @@
   border-radius: 10px;
 }
 
-.card:hover {
-  background-color: #696969;
+.card:hover {/*Hover Effect für Card*/
+  background-color: #696969; 
   border: 3px solid #696969;
 }
 
@@ -83,6 +89,7 @@
   object-fit: cover;
 }
 
+/*Wetter-Daten*/
 .weatherUI{
   height: 55vh;
 }
@@ -102,12 +109,13 @@
 }
 
 .weatherList{
-  display: flex;
+  display: flex; /*Flexbox für Wetter-Items*/
   justify-content: space-between;
   padding: 5%;
   color: white;
 }
 
+/*HTML-Canvas*/
 .canvas {
   display: flex;
   justify-content: center;
@@ -115,6 +123,7 @@
   padding-bottom: 10%;
 }
 
+/*RSS-Nachrichten*/
 .newsItem {
   display: flex;
   justify-content: space-between;
@@ -141,6 +150,7 @@
   border-radius: 10px;
 }
 
+/*Footer*/
 .footer {
   position: absolute;
   width: 100%;
@@ -154,6 +164,7 @@
   color: gray;
 }
 
+/*Media Query für Responsiveness*/
 @media (max-width: 720px) {
   .hero h1 {
     padding-top: 25px;
@@ -165,12 +176,12 @@
   }
 
 	.container {
-    flex-direction: column;
+    flex-direction: column; /*Cards sind dann untereinander*/
     justify-content: center;
   }
 
   .card {
-    width: 80vw;
+    width: 80vw; /*Größe der Cards anpassen*/
     margin-bottom: 10%;
   }
 
@@ -183,7 +194,7 @@
   }
 
   .weatherList {
-    flex-direction: column;
+    flex-direction: column; /*Wetter-Daten sind dann untereinander*/
     justify-content: center;
     padding: 10%;
   }
@@ -194,13 +205,13 @@
   }
 
   .newsItem {
-    font-size: x-small;
+    font-size: x-small; /*Kleinere Schriftgröße sonst nicht responsive*/
     padding: 4%;
     margin-bottom: 7%;
   }
   
   .newsImage {
-    width: 60%;
+    width: 60%; /*Bild größe anpassen damit es nicht zu klein ist*/
     height: auto;
     display: flex;
     align-items: center;

@@ -1,3 +1,4 @@
+//Seite für das HTML-Canvas Unterschrift Credit
 "use client";
 import React, { useState } from 'react';
 import styles from "../page.module.css";
@@ -6,22 +7,24 @@ import Footer from '../footer.js';
 import DrawingCanvas from "./drawingCanvas";
 import Link from 'next/link';
 
+// Canvas Komponente
 export default function Canvas() {
   const [isCanvasVisible, setIsCanvasVisible] = useState(false);
   const [clearCanvas, setClearCanvas] = useState(false);
   const [drawingImageUrl, setDrawingImageUrl] = useState('');
-
+  // Funktion zum Anzeigen/Verstecken des Canvas
   const toggleCanvas = () => {
     setIsCanvasVisible(!isCanvasVisible);
-    setClearCanvas(!isCanvasVisible); // Clear canvas when opening, not when closing
+    setClearCanvas(!isCanvasVisible);
   };
-
+  // Funktion zum Speichern der Unterschrift
   const handleDrawingSaved = (imageUrl) => {
     setDrawingImageUrl(imageUrl);
-    toggleCanvas(); // Close the canvas after saving
+    toggleCanvas();
   };
 
   return (
+    // HTML-Struktur für die Canvas-Seite
     <>
       <Navbar />
       <div style={{ paddingTop: "20vh" }}>

@@ -1,3 +1,4 @@
+//Seite für das Aktienkurse Anzeige Credit
 "use client"
 import { useEffect, useRef, useState } from "react";
 import Chart from "chart.js/auto";
@@ -6,6 +7,7 @@ import Navbar from '../navbar.js';
 import Footer from '../footer.js';
 import Link from 'next/link';
 
+// Funktion zum Abrufen der Aktiendaten
 const fetchStockData = async (symbol) => {
   const apiKey = process.env.NEXT_PUBLIC_ALPHA_VANTAGE_API_KEY;
   const apiUrl = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=${apiKey}`;
@@ -14,14 +16,14 @@ const fetchStockData = async (symbol) => {
   console.log(data);
   return data;
 };
-
+// Funktion zum Transformieren der Aktiendaten in ein Chart.js-kompatibles Format
 const transformData = (data) => {
   const timeSeries = data["Time Series (Daily)"];
   const dates = Object.keys(timeSeries).slice(0, 30).reverse();
   const prices = dates.map((date) => parseFloat(timeSeries[date]["4. close"]));
   return { dates, prices };
 };
-
+// Funktion zum Erhalten der Aktieninformationen
 const getStockInfo = (stockData) => {
   const lastDate = stockData.dates[stockData.dates.length - 1];
   const currentPrice = stockData.prices[stockData.prices.length - 1];
@@ -29,17 +31,17 @@ const getStockInfo = (stockData) => {
   const maxPrice = Math.max(...stockData.prices);
   return { lastDate, currentPrice, minPrice, maxPrice };
 };
-
+// Komponente für das Aktiendiagramm
 const StockChart = ({ symbol, stockData }) => {
   const chartRef = useRef(null);
   const chartInstance = useRef(null);
   const [stockInfo, setStockInfo] = useState(null);
-
+  // useEffect Hook, um das Chart.js-Diagramm zu initialisieren
   useEffect(() => {
     if (chartInstance.current) {
       chartInstance.current.destroy();
     }
-
+    // Initialisiere das Chart.js-Diagramm
     const ctx = chartRef.current.getContext("2d");
     chartInstance.current = new Chart(ctx, {
       type: "line",
@@ -93,10 +95,11 @@ const StockChart = ({ symbol, stockData }) => {
   }, [stockData]);
 
   return (
+    // HTML-Struktur für das Aktiendiagramm
     <>
       <canvas ref={chartRef} style={{padding: '3%'}}></canvas>
       {stockInfo && (
-        <div className={styles.stockInfo} style={{padding: '3%', color: 'white'}}>
+        <div className={styles.stockInfo} style={{paddingLeft: '6%', color: 'white'}}>
           <p><strong>Latest Date:</strong> {stockInfo.lastDate}</p>
           <p><strong>Current Price:</strong> ${stockInfo.currentPrice}</p>
           <p><strong>Minimum Price:</strong> ${stockInfo.minPrice}</p>
@@ -107,6 +110,7 @@ const StockChart = ({ symbol, stockData }) => {
   );
 };
 
+// Hauptkomponente für die Aktienseite
 export default function Stock() {
   const [stocks, setStocks] = useState({
     AAPL: { dates: [], prices: [] },
@@ -114,12 +118,12 @@ export default function Stock() {
     MSFT: { dates: [], prices: [] },
   });
   const [selectedStock, setSelectedStock] = useState("AAPL"); // Default selected stock
-
+  // useEffect Hook, um die Aktiendaten zu laden
   useEffect(() => {
     const fetchAllStockData = async () => {
       const symbols = ["AAPL", "GOOGL", "MSFT"];
       const stockData = {};
-
+      // Lade die Aktiendaten für jedes Symbol
       for (const symbol of symbols) {
         const data = await fetchStockData(symbol);
         stockData[symbol] = transformData(data);
@@ -130,12 +134,13 @@ export default function Stock() {
 
     fetchAllStockData();
   }, []);
-
+  // Funktion zum Wechseln des ausgewählten Aktien-Symbols
   const handleStockToggle = (symbol) => {
     setSelectedStock(symbol);
   };
 
   return (
+    // HTML-Struktur für die Aktienseite
     <>
       <Navbar />
       <div style={{ paddingTop: "20vh" }}></div>
@@ -149,7 +154,7 @@ export default function Stock() {
         <button onClick={() => handleStockToggle("MSFT")}>Microsoft</button>
       </div>
       {Object.keys(stocks).map((symbol) => (
-        <div key={symbol} style={{ display: selectedStock === symbol ? "block" : "none", padding: '3%' }}>
+        <div key={symbol} style={{ display: selectedStock === symbol ? "block" : "none", padding: '3%'}}>
           <h2 style={{ textAlign: 'center', color: 'white' }}>{symbol}</h2>
           <StockChart symbol={symbol} stockData={stocks[symbol]} />
         </div>

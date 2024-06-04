@@ -1,3 +1,4 @@
+//Seite für das Wetter Daten Anzeige Credit
 "use client";
 import { useState } from "react";
 import styles from "../page.module.css";
@@ -5,11 +6,13 @@ import Navbar from '../navbar.js';
 import Footer from '../footer.js';
 import Link from 'next/link';
 
+// Wetter Komponente
 export default function Weather() {
   const [weatherData, setWeatherData] = useState(null);
   const [locationData, setLocationData] = useState(null);
   const [error, setError] = useState("");
 
+  // Funktion zum Suchen des Wetters mit Openweathermap API
   const searchOpenweathermap = () => {
     const apiKey = process.env.NEXT_PUBLIC_WEATHER_API_KEY;
     const city = document.getElementById("city").value;
@@ -22,7 +25,7 @@ export default function Weather() {
         if (data.cod != "404") {
           const formattedData = populateWeatherData(data);
           setWeatherData(formattedData);
-          setLocationData(data.city); // Store location data separately
+          setLocationData(data.city);
           setError("")
         } else {
           setWeatherData(null);
@@ -33,12 +36,13 @@ export default function Weather() {
       .catch(error => console.error("Error fetching data from Openweathermap:", error));
   };
 
+  // Funktion zum Formatieren der Wetterdaten
   const populateWeatherData = (data) => {
     const formatDate = (timestamp) => {
       const date = new Date(timestamp * 1000);
       return date.toISOString().split('T')[0];
     };
-
+    // Gruppieren der Daten nach Datum
     const dailyData = data.list.reduce((acc, item) => {
       const date = formatDate(item.dt);
       if (!acc[date]) {
@@ -47,9 +51,9 @@ export default function Weather() {
       acc[date].push(item);
       return acc;
     }, {});
-
+    // Auswahl der ersten 5 Tage
     const dates = Object.keys(dailyData).slice(0, 5);
-
+    // Formatieren der Daten für die Anzeige
     const formattedWeatherData = dates.map((date) => {
       const dayData = dailyData[date];
       const temps = dayData.map(item => item.main.temp);
@@ -60,12 +64,13 @@ export default function Weather() {
     });
     
     console.log(formattedWeatherData)
-
+    // Rückgabe der formatierten Daten
     return formattedWeatherData.map((day) => {
       return (
         <div key={day.date}>
           <p>{day.date}</p>
           <div className={styles.weatherItem}>
+            {/* Wetter Icon und Beschreibung */}
             {day.weatherAt17 ? (
               <>
                 <img src={`https://openweathermap.org/img/wn/${day.weatherAt17.weather[0].icon}@2x.png`} alt="weather icon" />
@@ -86,6 +91,7 @@ export default function Weather() {
   };
 
   return (
+    // HTML Struktur Wetter UI
     <>
       <Navbar />
       <div style={{ paddingTop: "20vh" }}></div>

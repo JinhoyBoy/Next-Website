@@ -1,3 +1,4 @@
+//Seite für das RSS-Nachrichten Credit
 "use client";
 import { useEffect, useState } from 'react';
 import styles from "../page.module.css";
@@ -5,40 +6,42 @@ import Navbar from '../navbar.js';
 import Footer from '../footer.js';
 import Link from 'next/link';
 
+// Funktion zum Abrufen des RSS-Feeds
 const fetchRSSFeed = async (url) => {
   const response = await fetch(`/api/rss?feedUrl=${encodeURIComponent(url)}`, {cache: 'no-store'});
   const data = await response.json();
   return data;
 };
 
+// Funktion zum Parsen des RSS-Feeds
 const parseRSS = (data) => {
   const parser = new DOMParser();
   const xmlDoc = parser.parseFromString(data, "text/xml");
   const items = xmlDoc.getElementsByTagName('item');
   const parsedItems = [];
 
+  // Parse the first 10 items
   for (let i = 0; i < Math.min(items.length, 10); i++) {
     const item = items[i];
     const title = item.getElementsByTagName('title')[0]?.textContent || 'No title';
     const link = item.getElementsByTagName('link')[0]?.textContent || '#';
     const pubDate = item.getElementsByTagName('pubDate')[0]?.textContent || 'No date';
     const description = item.getElementsByTagName('description')[0]?.textContent || 'No description';
-
+    // Get the first image from media:thumbnail or media:content
     const mediaThumbnail = item.getElementsByTagName('media:thumbnail')[0];
     const mediaContent = item.getElementsByTagName('media:content')[0];
     const image = mediaThumbnail ? mediaThumbnail.getAttribute('url') : 
                    mediaContent ? mediaContent.getAttribute('url') : null;
-
+    // Add the parsed item to the list
     parsedItems.push({ title, link, pubDate, description, image });
   }
 
   return parsedItems;
 };
-
 const News = () => {
   const [bbcNews, setBbcNews] = useState([]);
   const [nytNews, setNytNews] = useState([]);
-
+  // useEffect Hook, um die RSS-Feeds zu laden
   useEffect(() => {
     const fetchBbcNews = async () => {
       try {
@@ -51,7 +54,7 @@ const News = () => {
         console.error('Error fetching or parsing BBC News RSS feed:', error);
       }
     };
-
+    // Funktion zum Abrufen des RSS-Feeds
     const fetchNytNews = async () => {
       try {
         const data = await fetchRSSFeed('https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml');
@@ -69,6 +72,7 @@ const News = () => {
   }, []);
 
   return (
+    // HTML-Struktur für die Nachrichten-Seite
     <>
       <Navbar />
       <div style={{ paddingTop: "20vh" }}></div>

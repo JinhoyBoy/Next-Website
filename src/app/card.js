@@ -1,3 +1,4 @@
+//Card Komponente für die Homepage
 import styles from "./page.module.css";
 
 export default function Card(props) {
