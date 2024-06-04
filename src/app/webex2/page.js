@@ -2,7 +2,6 @@
 "use client";
 import React, { useEffect } from 'react';
 import Link from 'next/link';
-import './DHBWWebengineering.css';
 
 const Webex2 = () => {
   useEffect(() => {
