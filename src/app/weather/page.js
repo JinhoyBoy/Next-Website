@@ -99,7 +99,7 @@ export default function Weather() {
         <h1>Weather!</h1>
         <br />
         <input id="city" placeholder="City" />
-        <button onClick={searchOpenweathermap}>Send</button>
+        <button onClick={searchOpenweathermap}>Search</button>
       </div>
       <div>
         <div className={styles.weatherUI}>

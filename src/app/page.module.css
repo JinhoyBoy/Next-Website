@@ -104,7 +104,7 @@
 .weatherItem {
   padding: 4%;
   width: 16vw;
-  background-image: linear-gradient(rgb(146, 157, 174), rgb(49, 56, 75));
+  background-image: linear-gradient(rgb(0, 0, 0), rgb(38, 41, 50));
   border-radius: 10px;
 }
 
@@ -139,14 +139,10 @@
   color: rgb(118, 170, 249);
 }
 
-.newsImage {
-  width: 20%;
-  height: auto;
-}
-
 .newsImage img {
-  width: 100%;
-  height: auto;
+  width: 20vw;
+  height: 24vh;
+  object-fit: cover;
   border-radius: 10px;
 }
 
@@ -177,11 +173,11 @@
 
 	.container {
     flex-direction: column; /*Cards sind dann untereinander*/
-    justify-content: center;
+    align-items: center;
   }
 
   .card {
-    width: 80vw; /*Größe der Cards anpassen*/
+    width: 75vw; /*Größe der Cards anpassen*/
     margin-bottom: 10%;
   }
 
@@ -210,16 +206,10 @@
     margin-bottom: 7%;
   }
   
-  .newsImage {
-    width: 60%; /*Bild größe anpassen damit es nicht zu klein ist*/
-    height: auto;
-    display: flex;
-    align-items: center;
-  }
-  
   .newsImage img {
-    width: 100%;
-    height: auto;
+    width: 22vw;
+    height: 10vh;
+    object-fit: cover;
     border-radius: 10px;
   }
 }
