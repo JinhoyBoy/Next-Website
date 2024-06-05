@@ -42,10 +42,10 @@ const getCachedData = (symbol) => {
     const parsedData = JSON.parse(cachedData);
     const cachedTime = new Date(parsedData.timestamp);
     const currentTime = new Date();
-    const threeHours = 10* 60* 1000;
+    const tenMinutes = 10* 60* 1000;
 
-    // Checken ob chachedData kürzer als 3 Stunden war
-    if ((currentTime - cachedTime) < threeHours) {
+    // Checken ob chachedData kürzer als 10 Minuten war
+    if ((currentTime - cachedTime) < tenMinutes) {
       return parsedData.data;
     }
   }
