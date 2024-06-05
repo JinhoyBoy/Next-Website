@@ -1,36 +1,21 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next-Projekt
+## Projekt starten
 
-## Getting Started
+### Mit npm:
+#### Starten
+1. `npm install`
+2. `npm run dev`
+- Anwendung normalerweise unter http://localhost:3000 erreichbar
 
-First, run the development server:
+### Mit Docker
+#### Starten
+1. `docker build -t imagename .`
+2. `docker run -p 3000:3000 imagename`
+- imagename kann beliebig sein
+- Anwendung unter http://localhost:3000 erreichbar
+#### Beenden
+1. `docker ps ` dann ID des laufenden Images nachschauen (bsp. 123456789abc)
+2. `docker stop 123456789abc` (die Image ID eingeben)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## ENV Variablen
+Environment Variablen können in der bestehenden .env.local Datei geändert werden. Diese beinhalten den API-Key für Wetterdaten und Akitendaten.
