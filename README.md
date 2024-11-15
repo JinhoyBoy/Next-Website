@@ -34,4 +34,4 @@
 2. `docker stop 123456789abc` (enter the image ID)
 
 ## ENV variables
-Environment variables can be changed in the existing .env.local file. These contain the API key for weather data and battery data.
+Environment variables can be changed in the existing .env.local file. These contain the API key for weather data and stock data.
